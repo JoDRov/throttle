@@ -1,19 +1,15 @@
-const delay: number = 1500
-const userString: string = "Hello, World"
+export const delay: number = 1500
+export const id: number = 1;
+const userArray: string[] = ["Jose", "David", "Juan"]
 
-function throttle(text: string, delay: number) {
-  let timerFlag: null | ReturnType<typeof setTimeout> = null;
-
-  return () => {
-    if (timerFlag === null) {
-      printText(text);
-      timerFlag = setTimeout(() => {
-        timerFlag = null;
-      }, delay);
-    }
-  };
+export async function throttle (id: number, delay: number) {
+  setTimeout(() => {
+    console.log(`${userArray[id]} inside function`)
+    const resultFn = userArray[id]
+    return resultFn
+  }, delay);
+  
 }
 
-function printText(text: string){
-  console.log(text)
-}
+throttle(id, delay).then((data) => console.log(data))
+//console.log(`${result} after calling the function`)
