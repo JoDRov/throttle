@@ -1,15 +1,18 @@
 export const delay: number = 1500
-export const id: number = 1;
-const userArray: string[] = ["Jose", "David", "Juan"]
+export let id: number = 1;
+export const userArray: string[] = ["Jose", "David", "Juan"]
 
 export async function throttle (id: number, delay: number) {
-  setTimeout(() => {
-    console.log(`${userArray[id]} inside function`)
-    const resultFn = userArray[id]
-    return resultFn
-  }, delay);
-  
+  return new Promise<string>(resolve => {
+    setTimeout(() => {
+      const result: string = userArray[id]
+      resolve(result)
+    }, delay);
+  })
 }
 
-throttle(id, delay).then((data) => console.log(data))
-//console.log(`${result} after calling the function`)
+throttle(id, delay).then((data) => { expect(data).toBe("David") })
+id = 0
+throttle(id, delay).then((data) => { expect(data).toBe("Jose") })
+id = 2
+throttle(id, delay).then((data) => { expect(data).toBe("Juan") })
