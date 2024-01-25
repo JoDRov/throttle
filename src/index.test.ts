@@ -6,11 +6,11 @@ let id = 1;
 
 describe('myFunction throttled', () => {
 
-  beforeEach(() => {
+  /*beforeEach(() => {
     return new Promise<void>((resolve) => {
       resolve()
     })
-  })
+  })*/
 
   it('should throttle the function calls', async () => {
     throttle(id, delay).then((data) => expect(data).toBe('David'))

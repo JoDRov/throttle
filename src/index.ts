@@ -10,9 +10,3 @@ export async function throttle (id: number, delay: number) {
     }, delay);
   })
 }
-
-throttle(id, delay).then((data) => { expect(data).toBe("David") })
-id = 0
-throttle(id, delay).then((data) => { expect(data).toBe("Jose") })
-id = 2
-throttle(id, delay).then((data) => { expect(data).toBe("Juan") })
