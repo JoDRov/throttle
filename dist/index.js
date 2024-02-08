@@ -9,7 +9,7 @@ export function throttle(func, ms, text) {
     }
     else {
         setTimeout(() => {
-            throttle(throttle, ms, text);
+            throttle(func, ms, text);
         }, ms);
     }
 }

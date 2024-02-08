@@ -10,7 +10,7 @@ export function throttle(func: Function, ms: number, text: string)  {
   } 
   else {
     setTimeout(() => {
-      throttle(throttle, ms, text)
+      throttle(func, ms, text)
     }, ms)
   }
 }
