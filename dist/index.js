@@ -1,13 +1,20 @@
-export const delay = 1500;
-export const id = 1;
-const userArray = ["Jose", "David", "Juan"];
-export async function throttle(id, delay) {
-    setTimeout(() => {
-        console.log(`${userArray[id]} inside function`);
-        const resultFn = userArray[id];
-        return resultFn;
-    }, delay);
+let waitToEnd = false;
+export function throttle(func, ms, text) {
+    if (!waitToEnd) {
+        waitToEnd = true;
+        setTimeout(() => {
+            console.log(text);
+            waitToEnd = false;
+        }, ms);
+    }
+    else {
+        setTimeout(() => {
+            throttle(throttle, ms, text);
+        }, ms);
+    }
 }
-throttle(id, delay).then((data) => console.log(data));
-//console.log(`${result} after calling the function`)
+throttle(throttle, 500, "Hola");
+throttle(throttle, 1000, "Adios");
+throttle(throttle, 1500, "Hola de nuevo");
+throttle(throttle, 2000, "Bueno ahora si que ya me voy a ir yendo, adios");
 //# sourceMappingURL=index.js.map

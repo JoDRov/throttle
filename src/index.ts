@@ -1,12 +1,22 @@
-export const delay: number = 1500
-export let id: number = 1;
-export const userArray: string[] = ["Jose", "David", "Juan"]
+let waitToEnd: boolean = false;
 
-export async function throttle (id: number, delay: number) {
-  return new Promise<string>(resolve => {
+export function throttle(func: Function, ms: number, text: string)  {
+  if (!waitToEnd){
+    waitToEnd = true
+    setTimeout( () => {
+      console.log(text)
+      waitToEnd = false
+    }, ms)
+  } 
+  else {
     setTimeout(() => {
-      const result: string = userArray[id]
-      resolve(result)
-    }, delay);
-  })
+      throttle(throttle, ms, text)
+    }, ms)
+  }
 }
+
+
+throttle(throttle, 500, "Hola")
+throttle(throttle, 1000, "Adios")
+throttle(throttle, 1500, "Hola de nuevo")
+throttle(throttle, 2000, "Bueno ahora si que ya me voy a ir yendo, adios")
