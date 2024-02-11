@@ -1,5 +1,6 @@
+"use strict";
 let waitToEnd = false;
-export function throttle(func, ms, text) {
+function throttle(func, ms, text) {
     if (!waitToEnd) {
         waitToEnd = true;
         setTimeout(() => {
@@ -13,8 +14,9 @@ export function throttle(func, ms, text) {
         }, ms);
     }
 }
-throttle(throttle, 500, "Hola");
-throttle(throttle, 1000, "Adios");
-throttle(throttle, 1500, "Hola de nuevo");
-throttle(throttle, 2000, "Bueno ahora si que ya me voy a ir yendo, adios");
+/*throttle(throttle, 500, "Hola")
+throttle(throttle, 1000, "Adios")
+throttle(throttle, 1500, "Hola de nuevo")
+throttle(throttle, 2000, "Bueno ahora si que ya me voy a ir yendo, adios")*/
+module.exports = throttle;
 //# sourceMappingURL=index.js.map

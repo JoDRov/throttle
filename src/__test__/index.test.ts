@@ -1,9 +1,9 @@
-const throttle = require("../../dist/index.js")
+const throttled = require("../../dist/index.js")
 const delay: number = 500
 
 jest.useFakeTimers()
 const func = jest.fn
-const throttledFunc = throttle(func, delay)
+const throttledFunc = throttled(func, delay, "Hello")
 
 describe('myFunction throttle', () => {
   it('should throttle the function calls', async () => {
