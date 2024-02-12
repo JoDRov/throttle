@@ -23,7 +23,5 @@ describe('myFunction throttle', () => {
     jest.advanceTimersByTime(500)
     jest.runAllTimers()
     expect(func).toHaveBeenCalledTimes(3)
-
-    
   })
 })
